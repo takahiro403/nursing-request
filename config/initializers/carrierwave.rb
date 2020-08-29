@@ -12,6 +12,6 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1'
   }
 
-  config.fog_directory  = 'nursingrequest'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/nursingrequest'
+  config.fog_directory  = 'request-app433'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/request-app433'
 end
