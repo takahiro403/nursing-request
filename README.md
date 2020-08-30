@@ -1,5 +1,15 @@
-# README
-フォークのテスト
+# 情報共有アプリ
+
+## 情報共有をより正確、円滑にするためのアプリケーション
+
+### AppURL
+- URL[https://request-app-422.herokuapp.com/](https://request-app-422.herokuapp.com/)  
+- Basic認証
+  - ID:admin
+  - Pass:222
+
+
+
 ## informationsテーブル
 
 |Culumn|Type|Option|
