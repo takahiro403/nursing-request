@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2020_08_15_070502) do
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "images", force: :cascade do |t|
     t.string "url", null: false
     t.bigint "information_id"
     t.datetime "created_at", null: false
@@ -26,13 +29,13 @@ ActiveRecord::Schema.define(version: 2020_08_15_070502) do
     t.index ["information_id"], name: "index_images_on_information_id"
   end
 
-  create_table "information", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "information", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "information_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "information_categories", force: :cascade do |t|
     t.bigint "information_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_070502) do
     t.index ["information_id"], name: "index_information_categories_on_information_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.integer "role", default: 1, null: false
     t.string "email", default: "", null: false
