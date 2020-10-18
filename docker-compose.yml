@@ -3,10 +3,14 @@ version: '3'
 services:
   db:
     image: postgres
+    environment:
+      POSTGRES_USER: 'admin'
+      POSTGRES_PASSWORD: 'admin'
     ports:
       - '5432:5432' # ホストからゲストへポートフォワード
     volumes:
       - postgresql-data:/var/lib/postgresql/data
+    
   web:
     build:
       context: .
@@ -18,6 +22,8 @@ services:
       - db # DB側のコンテナが出来上がってからwebを実行する
     ports:
       - "3000:3000" # ホストからゲストへポートフォワード
+    links:
+      - db  #railsが同じネットワークに属する
     volumes:
       - .:/myproject # ソースコード変更したらDocker側も即反映されるように
 volumes:
