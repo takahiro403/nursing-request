@@ -8,6 +8,6 @@ COPY Gemfile /myproject/Gemfile
 COPY Gemfile.lock /myproject/Gemfile.lock
 
 RUN bundle install
-RUN mkdir app/tmp/pids
-RUN mkdir app/tmp/sockets
 COPY . /myproject
+# RUN mkdir -p myproject/tmp/pids
+# RUN mkdir -p myproject/tmp/sockets
