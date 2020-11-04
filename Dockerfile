@@ -4,13 +4,13 @@ RUN apt-get update && apt-get install -y postgresql-client --no-install-recommen
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 RUN apt-get install -y vim
 
-WORKDIR /myproject
+WORKDIR /nursing-request
 
-COPY Gemfile /myproject/Gemfile
-COPY Gemfile.lock /myproject/Gemfile.lock
+COPY Gemfile /nursing-request/Gemfile
+COPY Gemfile.lock /nursing-request/Gemfile.lock
 
 RUN bundle install
-COPY . /myproject
+COPY . /nursing-request
 RUN mkdir -p /tmp/sockets
 
 VOLUME /app/public

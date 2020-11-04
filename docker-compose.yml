@@ -24,7 +24,7 @@ services:
     links:
       - db  #railsが同じネットワークに属する
     volumes:
-      - .:/myproject # ソースコード変更したらDocker側も即反映されるように
+      - .:/nursing-request # ソースコード変更したらDocker側も即反映されるように
       - /app/log
   
   nginx:
