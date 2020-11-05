@@ -5,19 +5,18 @@ class Ability
 
   def initialize(user)
     # Define abilities for the passed in user here. For example:
-    #
-      user ||= User.new # guest user (not logged in)
+     # ゲストユーザー（未ログインの場合） 
+      user ||= User.new
 
       can :manage, :session
       can :manage, :registration
-      # can :manage, :all
 
+      # 権限を持っているかどうか
       if user.admin?
         can :manage, :all
       else
         can :manage, :session
         can :read, :exclusion
-        # can :manage, :all
       end
     #
     # The first argument to `can` is the action you are giving the user
