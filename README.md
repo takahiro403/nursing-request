@@ -5,7 +5,7 @@
 簡単な操作で画像を共有でき、より正確にかつ簡単に情報共有を行うことができます。
 
 ## アクセス方法
-#### 1. こちらからアクセスいただけます。<br>[https://request-app-422.herokuapp.com/](https://request-app-422.herokuapp.com/)
+#### 1. こちらからアクセスいただけます。<br>[https://www.nursing-request.ga/](https://www.nursing-request.ga/)
   
 #### 2. ログイン画面が表示されますので、以下のアドレス、パスワードを入力しログインしてください。
 - メールアドレス:owner@user
