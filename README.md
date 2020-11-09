@@ -5,16 +5,12 @@
 簡単な操作で画像を共有でき、より正確にかつ簡単に情報共有を行うことができます。
 
 ## アクセス方法
-#### 1. こちらからアクセスいただけます。<br>[https://request-app-422.herokuapp.com/](https://request-app-422.herokuapp.com/)
-
-#### 2. Basic認証画面に以下のID、Passを入力してください。
-- ID:admin
-- Pass:2222
+#### 1. こちらからアクセスいただけます。<br>[https://www.nursing-request.ga/](https://www.nursing-request.ga/)
   
-#### 3. ログイン画面が表示されますので、以下のアドレス、パスワードを入力しログインしてください。
+#### 2. ログイン画面が表示されますので、以下のアドレス、パスワードを入力しログインしてください。
 - メールアドレス:owner@user
 - パスワード:owner123
-![ログイン画面](login.png)
+![ログイン画面](readme-image/login.png)
 ## なぜこのアプリを作ったか
 ### 【背景】
 勤務先の介護施設では情報共有時に抜け漏れが発生したり、正確に伝わらないといった課題がありました。<br>
@@ -45,30 +41,34 @@
 - 投稿写真の枚数が少ないなどアプリの効果を十分には実感できなかった<br>
 
 ## 工夫したポイント
+### 【開発・本番環境にDockerを使用】
+- 開発環境の構築、統一を簡単に行う
+- アプリ起動の高速化
+- 多くの企業が導入している(今後も増える)ため事前にキャッチアップ
 ### 【セキュリティの強化】
 実際に社内で活用するため、セキュリティ面の強化に力を入れました。<br>
 - アカウントによって機能を制限<br>
 社内スタッフのみ投稿、閲覧ができるよう権限管理機能を実装しました。<br>
 #### ※管理者アカウントでログインした場合は閲覧、投稿機能を利用できます
-![権限あり](kengenari.gif)
+![権限あり](readme-image/kengenari.gif)
 
 #### ※管理者以外のアカウントでログインした場合は閲覧、投稿はできません
-![権限あり](kengennashi.gif)
+![権限あり](readme-image/kengennashi.gif)
+
+- webアプリ運用に最低限必要なセキュリティ対策を網羅<br>
+xss/sqlインジェクション/csrf/セッションハイジャック/https化/バリデーション/strong parameter使用…
 
 - 特定のユーザーのみサイトを閲覧できる<br>
-Basic認証を設定し、外部のユーザーが閲覧できないようにしました。
-
-- 知見のある方の意見を取り入れる<br>
-スキルシェアサービスを利用し、現役エンジニアの方からセキュリティ面に関してアドバイスをいただきました。<br>
-自分だけでは気づかなかった部分をご指摘いただけたことで、会社でも安心して使用してもらうことができました。<br>
+Basic認証を設定し、外部のユーザーが閲覧できないようにしました.<br>
+※当リポジトリは見本用アプリのためBasic認証は無効にしております
 
 ### 【使いやすさ】
 最低限の機能のみ実装し、意見をもらいながら修正を繰り返すことで現場で使ってもらえるアプリを意識しました。<br>
 - 写真拡大機能<br>
-![zoom](zoom.gif)<br>
+![zoom](readme-image/zoom.gif)<br>
 写真が見づらいという意見をいただき、写真を拡大表示させる機能を実装しました。<br>
 既存のサービスをCDNで利用することでアプリ使用を中断することなくスピーディーな機能実装ができました。<br>
-
+- レスポンシブデザイン
 
 ## 今後の課題
 
@@ -82,9 +82,22 @@ Basic認証を設定し、外部のユーザーが閲覧できないようにし
 写真を投稿時にトリミングする機能が必要になったのですが、技術力不足により実装できませんでした。<br>
 今後も学習を継続し、様々な言語、フレームワークの理解を深めどんな機能でも実装できる技術力を身に付けたいです。
 
-## 開発環境
-Ruby / Ruby on Rails / JavaScript / jQuery / Postgres /
-HTML / CSS / SCSS / AWS (EC2 / S3 / IAM) / Capistrano / Heroku /
+## 言語・フレームワーク・インフラ
+### インフラ
+#### AWSの各種サービス
+VPC / ALB / EC2 / RDS(PostgreSQL) / S3<br>
+#### インフラ構成図
+![インフラ](readme-image/インフラ.001.png)<br>
+
+### バックエンド
+Ruby / Ruby on Rails
+
+### フロントエンド
+HTML / CSS / SCSS / JavaScript / jQuery<br>
+
+### 開発環境
+docker<br>
+
 
 ## アプリ機能
 投稿閲覧機能 / 画像投稿機能 / カテゴリ付け機能 / カテゴリ検索機能 / 権限管理機能 / ユーザー新規登録機能 / ユーザーログイン・ログアウト機能 / 画像拡大表示機能 /
@@ -101,6 +114,19 @@ HTML / CSS / SCSS / AWS (EC2 / S3 / IAM) / Capistrano / Heroku /
 - has_many :images
 - has_many :informations_categorys
 - has_many :categorys, through: informations_categorys
+- belongs_to :user
+
+### usersテーブル
+
+|Culumn|Type|Option|
+|------|----|-------|
+|name|string|null: fallse|
+|role|integer|null: fallse|
+|email|string|null: fallse|
+|password|string|null: fallse|
+
+#### Association
+- has_many :informations
 
 
 ### imagesテーブル
