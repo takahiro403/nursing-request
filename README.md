@@ -89,7 +89,7 @@ HTML / CSS / SCSS / AWS (EC2 / S3 / IAM) / Capistrano / Heroku /
 ## アプリ機能
 投稿閲覧機能 / 画像投稿機能 / カテゴリ付け機能 / カテゴリ検索機能 / 権限管理機能 / ユーザー新規登録機能 / ユーザーログイン・ログアウト機能 / 画像拡大表示機能 /
 
-![サンプル](readme-image/githubサンプル.pdf)
+![サンプル](readme-image/githubサンプル.001.png)
 
 
 
