@@ -114,6 +114,19 @@ docker<br>
 - has_many :images
 - has_many :informations_categorys
 - has_many :categorys, through: informations_categorys
+- belongs_to :user
+
+### usersテーブル
+
+|Culumn|Type|Option|
+|------|----|-------|
+|name|string|null: fallse|
+|role|integer|null: fallse|
+|email|string|null: fallse|
+|password|string|null: fallse|
+
+#### Association
+- has_many :informations
 
 
 ### imagesテーブル
